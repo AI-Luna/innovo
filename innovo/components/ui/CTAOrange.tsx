@@ -41,11 +41,10 @@ export const CTAOrange: React.FC = () => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-[#E0E0E0] border-2 border-black rounded-lg font-bold text-lg flex items-center gap-3 hover:bg-[#F0F0F0] transition-colors"
+            className="px-8 py-4 bg-[#E0E0E0] border-2 border-black rounded-lg font-bold text-lg hover:bg-[#F0F0F0] transition-colors"
             style={{ color: '#000' }}
           >
-            Talk with us
-            <div className="w-3 h-3 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 shadow-inner"></div>
+            Book a demo
           </motion.button>
         </motion.div>
       </div>

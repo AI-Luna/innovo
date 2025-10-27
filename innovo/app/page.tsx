@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { ModernHero, ModernFeatures, TechStack, ScrollReveal, ClientWork, CTAOrange } from '../components/ui';
+import { ModernHero, ModernFeatures, TechStack, ClientWork, CTAOrange } from '../components/ui';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('settlement');
@@ -146,27 +146,6 @@ export default function Home() {
 
         {/* Orange CTA Section */}
         <CTAOrange />
-
-        {/* CTA Section */}
-        <section className="py-20" style={{ background: 'linear-gradient(to right, #FF4500, #3670A3)' }}>
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <ScrollReveal direction="up">
-              <h2 className="text-4xl font-bold text-white mb-8">
-                Ready to Transform Your Energy Trading?
-              </h2>
-              <p className="text-xl text-white/90 mb-12">
-                Join leading energy companies using Innovo Markets for automated, efficient trading.
-              </p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-full hover:shadow-lg transition-all duration-300"
-              >
-                Get Started Today
-              </motion.button>
-            </ScrollReveal>
-          </div>
-        </section>
       </main>
 
       {/* Modern Footer */}
