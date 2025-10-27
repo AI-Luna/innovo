@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd innovo && npm install && npm run build",
+  "outputDirectory": "innovo/.next",
+  "installCommand": "cd innovo && npm install",
+  "framework": "nextjs",
+  "rootDirectory": "innovo"
+}
+
