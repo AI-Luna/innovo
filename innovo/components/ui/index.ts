@@ -13,3 +13,5 @@ export { ScrollReveal } from './ScrollReveal';
 export { ModernHero } from './ModernHero';
 export { ModernFeatures } from './ModernFeatures';
 export { TechStack } from './TechStack';
+export { ClientWork } from './ClientWork';
+export { CTAOrange } from './CTAOrange';

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ScrollReveal } from './ScrollReveal';
 
 // Typewriter effect component
-const TypewriterText: React.FC< { text: string; speed?: number; startTyping: boolean }> = ({ text, speed = 30, startTyping }) => {
+const TypewriterText: React.FC< { text: string; speed?: number; startTyping: boolean }> = ({ text, speed = 50, startTyping }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -25,8 +25,22 @@ const TypewriterText: React.FC< { text: string; speed?: number; startTyping: boo
 
   return (
     <>
-      {displayedText}
-      <span className="inline-block w-4 h-8 bg-[#FF4500] animate-pulse" />
+      <span className="font-hacker">{displayedText}</span>
+      <span 
+        className="font-hacker inline-block" 
+        style={{ 
+          borderBottom: '2px solid #FF4500',
+          animation: 'blink 1s ease-in-out infinite'
+        }}
+      >
+        &nbsp;
+      </span>
+      <style jsx>{`
+        @keyframes blink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+      `}</style>
     </>
   );
 };
@@ -56,17 +70,18 @@ export const ModernFeatures: React.FC = () => {
       ref={sectionRef}
       className="py-32 relative overflow-hidden h-screen flex items-center"
       style={{
-        background: `linear-gradient(to bottom, transparent 0%, rgba(249, 250, 251, 0.3) 60%, rgba(249, 250, 251, 1) 100%)`
+        background: `linear-gradient(to bottom, transparent 0%, rgba(224, 224, 224, 0.3) 40%, rgba(224, 224, 224, 1) 70%)`
       }}
     >
-      <div className="max-w-5xl mx-auto px-6 relative z-10 -mt-[28rem]">
+      <div className="max-w-5xl mx-auto px-6 relative z-10 -mt-[15rem]">
         {/* Text block */}
         <ScrollReveal direction="up" delay={0.2}>
           <div className="px-16 py-12">
             <div className="relative" style={{ minHeight: '400px', display: 'flex', alignItems: 'center' }}>
               {/* Typewriter text */}
               <motion.p 
-                className="text-2xl lg:text-3xl font-terminal font-bold text-white leading-relaxed max-w-4xl"
+                className="text-2xl lg:text-3xl font-hacker leading-relaxed max-w-4xl"
+                style={{ color: '#E0E0E0' }}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 onViewportEnter={() => setIsTyping(true)}
@@ -74,7 +89,8 @@ export const ModernFeatures: React.FC = () => {
                 transition={{ duration: 1 }}
                 viewport={{ once: false }}
               >
-                <TypewriterText startTyping={isTyping} text="Innovo Markets is rebuilding the foundation of energy finance. By automating high-friction transactions and connecting market participants through one intelligent network, Innovo brings speed, trust, and clarity to the flow of energy commerce." />
+                <span>Innovo Markets is rebuilding the foundation of energy finance by{' '}</span>
+                <TypewriterText startTyping={isTyping} speed={50} text="automating how environmental commodities are transacted, verified, and settled across a unified digital network" />
               </motion.p>
             </div>
           </div>

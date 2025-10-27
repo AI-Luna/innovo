@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useHeroLift } from '../../hooks/useHeroLift';
 
 export const ModernHero: React.FC = () => {
@@ -81,16 +82,16 @@ export const ModernHero: React.FC = () => {
               }}
               transition={{ duration: 0.3 }}
             >
-              <a href="#" className="text-[#FF4500] font-mono font-medium hover:text-[#e63e00] transition-colors whitespace-nowrap">Solutions</a>
-              <a href="#" className="text-gray-200 hover:text-white transition-colors whitespace-nowrap font-mono">Technology</a>
-              <a href="#" className="text-gray-200 hover:text-white transition-colors whitespace-nowrap font-mono">Resources</a>
-              <a href="#" className="text-gray-200 hover:text-white transition-colors whitespace-nowrap font-mono">About Us</a>
+              <a href="#" className="text-[#FF4500] font-hacker hover:text-[#e63e00] transition-colors whitespace-nowrap">Solutions</a>
+              <a href="#" className="text-gray-200 hover:text-white transition-colors whitespace-nowrap font-hacker">Technology</a>
+              <a href="#" className="text-gray-200 hover:text-white transition-colors whitespace-nowrap font-hacker">Resources</a>
+              <a href="#" className="text-gray-200 hover:text-white transition-colors whitespace-nowrap font-hacker">About Us</a>
             </motion.div>
             
             {/* Careers - Always visible */}
             <a 
               href="#" 
-              className="text-gray-200 hover:text-white transition-colors font-mono"
+              className="text-gray-200 hover:text-white transition-colors font-hacker"
             >
               Careers
             </a>
@@ -98,7 +99,7 @@ export const ModernHero: React.FC = () => {
             {/* Contact Link */}
             <a 
               href="#" 
-              className="text-white font-bold hover:text-gray-300 transition-colors font-mono"
+              className="text-white hover:text-gray-300 transition-colors font-hacker"
             >
               Contact
             </a>
@@ -114,39 +115,40 @@ export const ModernHero: React.FC = () => {
 
         {/* Main Content Area */}
         <div className="flex-1 relative flex items-center justify-center" style={{ zIndex: 10 }}>
-          {/* Bottom Left Text */}
+          {/* Center Logo */}
           <motion.div
             animate={{ 
-              opacity: 1 - liftProgress,
-              color: liftProgress > 0.5 ? `rgb(0, 0, 0)` : `rgb(255, 255, 255)`
+              opacity: 1 - liftProgress
             }}
             transition={{ 
               duration: 0.6,
               ease: "easeInOut"
             }}
-            className="absolute bottom-16 left-8 lg:left-16 max-w-lg"
+            className="absolute inset-0 flex items-center justify-center"
           >
-            <h2 className="text-5xl lg:text-6xl font-bold leading-tight">
-              <span className="block">Automating Energy.</span>
-              <span className="block">Simplifying Transactions.</span>
-            </h2>
+            <Image 
+              src="/black innovo.png" 
+              alt="Innovo Markets" 
+              width={400} 
+              height={120}
+              className="object-contain"
+            />
           </motion.div>
 
-          {/* Bottom Right Text */}
+          {/* Bottom Text */}
           <motion.div
             animate={{ 
-              opacity: 1 - liftProgress,
-              color: liftProgress > 0.5 ? `rgb(0, 0, 0)` : `rgb(255, 255, 255)`
+              opacity: 1 - liftProgress
             }}
             transition={{ 
               duration: 0.6,
               ease: "easeInOut"
             }}
-            className="absolute bottom-16 right-8 lg:right-16 max-w-md text-right"
+            className="absolute bottom-8 left-0 right-0 text-center"
           >
-            <p className="text-lg leading-relaxed">
-              Innovo connects the environmental commodity market through one intelligent platform, bringing clarity to transactions and building the digital foundation of modern energy.
-            </p>
+            <h2 className="text-4xl lg:text-5xl font-bold leading-tight" style={{ color: '#262626' }}>
+              AUTOMATING ENERGY. SIMPLIFYING TRANSACTIONS.
+            </h2>
           </motion.div>
         </div>
       </motion.section>
