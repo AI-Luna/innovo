@@ -78,21 +78,21 @@ export const TechStack: React.FC = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
-      viewport={{ once: true }}
+      viewport={{ once: false }}
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* Title and Description Section */}
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Left: Title */}
           <div>
-            <h2 className="text-5xl lg:text-6xl font-hacker mb-6" style={{ color: '#1A1A1A', fontFamily: "'JetBrains Mono', monospace" }}>
-              <span style={{ fontWeight: 700 }}>Innovo Features</span>
+            <h2 className="text-5xl lg:text-6xl font-bold mb-6 font-hacker" style={{ color: '#1A1A1A' }}>
+              Innovo Features
             </h2>
           </div>
           
           {/* Right: Description */}
           <div className="flex items-center">
-            <p className="text-lg leading-relaxed font-bold" style={{ color: '#1A1A1A' }}>
+            <p className="text-lg leading-relaxed font-bold font-hacker" style={{ color: '#1A1A1A' }}>
               An end-to-end energy trading system that streamlines transactions, automates settlements, and embeds verification directly into every trade.
             </p>
           </div>
@@ -107,7 +107,7 @@ export const TechStack: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -121,20 +121,18 @@ export const TechStack: React.FC = () => {
                 {feature.title}
               </h3>
               
-              {/* Description - Appears when hovering over the entire card */}
-              {hoveredIndex === index && (
-                <motion.div 
-                  className="mt-4"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <p className="text-sm leading-relaxed text-center font-hacker" style={{ color: '#E0E0E0' }}>
-                    {feature.description}
-                  </p>
-                </motion.div>
-              )}
+              {/* Description - Always visible with fade-in on scroll */}
+              <motion.div 
+                className="mt-4"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6, delay: (index * 0.1) + 0.5, ease: "easeOut" }}
+              >
+                <p className="text-sm leading-relaxed text-center font-hacker" style={{ color: '#E0E0E0' }}>
+                  {feature.description}
+                </p>
+              </motion.div>
             </motion.div>
           ))}
         </div>

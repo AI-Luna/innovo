@@ -4,12 +4,12 @@ import { motion } from 'framer-motion';
 export const CTAOrange: React.FC = () => {
   return (
     <motion.section 
-      className="py-20 relative overflow-hidden"
+      className="py-32 relative overflow-hidden"
       style={{ backgroundColor: '#FF4500' }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      transition={{ duration: 1.2, ease: "easeOut" }}
-      viewport={{ once: true }}
+      transition={{ duration: 1.5, ease: [0.25, 0.1, 0.25, 1] }}
+      viewport={{ once: false }}
     >
       <div className="max-w-4xl mx-auto px-6">
         {/* Top divider line */}
@@ -17,13 +17,13 @@ export const CTAOrange: React.FC = () => {
         
         {/* Main text */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
+          transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: false }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8" style={{ color: '#000' }}>
-            An optimized power grid is no longer a nice to have: It's the prerequisite to human progress.
+            Energy markets need a digital backbone. We're building it.
           </h2>
         </motion.div>
 
@@ -33,10 +33,10 @@ export const CTAOrange: React.FC = () => {
         {/* CTA Button */}
         <motion.div
           className="flex justify-center"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
+          transition={{ duration: 1.5, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: false }}
         >
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -44,7 +44,7 @@ export const CTAOrange: React.FC = () => {
             className="px-8 py-4 bg-[#E0E0E0] border-2 border-black rounded-lg font-bold text-lg hover:bg-[#F0F0F0] transition-colors"
             style={{ color: '#000' }}
           >
-            Book a demo
+            Book a Demo
           </motion.button>
         </motion.div>
       </div>

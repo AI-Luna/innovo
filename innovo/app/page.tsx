@@ -27,7 +27,7 @@ export default function Home() {
     reports: {
       title: "Reports",
       description: "Innovo offers a full suite of retirement and reporting tools to simplify the process down to a few clicks. Innovo's assets are enriched with up to 16 data points, strengthening reporting and storytelling capabilities.",
-      image: "/Screenshot 2025-10-27 at 12.59.46.png"
+      image: "/Screenshot 2025-10-27 at 15.18.34.png"
     }
   };
 
@@ -56,63 +56,84 @@ export default function Home() {
         <motion.section 
           className="pt-8 pb-20"
           style={{ backgroundColor: '#E0E0E0' }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: false }}
         >
           <div className="max-w-4xl mx-auto px-6">
-            <div className="bg-[#262626] rounded-2xl p-8 shadow-2xl">
+            <motion.div 
+              className="bg-[#262626] rounded-2xl p-8 shadow-2xl"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              viewport={{ once: false }}
+            >
               {/* Buttons */}
               <div className="flex gap-2 mb-8 justify-center flex-wrap">
-                <button 
-                  onClick={() => setActiveTab('settlement')}
-                  className={`px-4 py-2 rounded-2xl text-sm font-medium transition-colors font-hacker flex items-center gap-2 ${
-                    activeTab === 'settlement' ? 'bg-gray-600' : 'bg-gray-700 hover:bg-gray-600'
-                  }`}
-                  style={{ color: '#E0E0E0' }}
-                >
-                  {activeTab === 'settlement' && (
-                    <span className="w-2 h-2 rounded-full bg-[#FF4500]"></span>
-                  )}
-                  Settlement
-                </button>
-                <button 
-                  onClick={() => setActiveTab('procurement')}
-                  className={`px-4 py-2 rounded-2xl text-sm font-medium transition-colors font-hacker flex items-center gap-2 ${
-                    activeTab === 'procurement' ? 'bg-gray-600' : 'bg-gray-700 hover:bg-gray-600'
-                  }`}
-                  style={{ color: '#E0E0E0' }}
-                >
-                  {activeTab === 'procurement' && (
-                    <span className="w-2 h-2 rounded-full bg-[#FF4500]"></span>
-                  )}
-                  Procurement
-                </button>
-                <button 
-                  onClick={() => setActiveTab('verification')}
-                  className={`px-4 py-2 rounded-2xl text-sm font-medium transition-colors font-hacker flex items-center gap-2 ${
-                    activeTab === 'verification' ? 'bg-gray-600' : 'bg-gray-700 hover:bg-gray-600'
-                  }`}
-                  style={{ color: '#E0E0E0' }}
-                >
-                  {activeTab === 'verification' && (
-                    <span className="w-2 h-2 rounded-full bg-[#FF4500]"></span>
-                  )}
-                  Verification
-                </button>
-                <button 
-                  onClick={() => setActiveTab('reports')}
-                  className={`px-4 py-2 rounded-2xl text-sm font-medium transition-colors font-hacker flex items-center gap-2 ${
-                    activeTab === 'reports' ? 'bg-gray-600' : 'bg-gray-700 hover:bg-gray-600'
-                  }`}
-                  style={{ color: '#E0E0E0' }}
-                >
-                  {activeTab === 'reports' && (
-                    <span className="w-2 h-2 rounded-full bg-[#FF4500]"></span>
-                  )}
-                  Reports
-                </button>
+                {['settlement', 'procurement', 'verification', 'reports'].map((tab, index) => {
+                  const tabs = ['settlement', 'procurement', 'verification', 'reports'];
+                  const labels = ['Settlement', 'Procurement', 'Verification', 'Reports'];
+                  const isActive = activeTab === tab;
+                  
+                  return (
+                    <motion.button
+                      key={tab}
+                      onClick={() => setActiveTab(tab)}
+                      className={`px-4 py-2 rounded-2xl text-sm font-medium font-hacker flex items-center gap-2 ${
+                        isActive ? 'bg-gray-600' : 'bg-gray-700 hover:bg-gray-600'
+                      }`}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      animate={!isActive ? {
+                        textShadow: ['0 0 0px #3670A3', '0 0 8px #3670A3, 0 0 12px #3670A3', '0 0 0px #3670A3'],
+                      } : {}}
+                      transition={{
+                        textShadow: {
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                          delay: index * 0.5
+                        }
+                      }}
+                      style={{ color: '#E0E0E0' }}
+                    >
+                      {isActive && (
+                        <motion.span 
+                          className="w-2 h-2 rounded-full bg-[#FF4500]"
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ duration: 0.2 }}
+                        />
+                      )}
+                      {!isActive && (
+                        <motion.span 
+                          className="w-2 h-2 rounded-full"
+                          style={{ backgroundColor: '#3670A3' }}
+                          animate={{
+                            opacity: [0.3, 1, 0.3],
+                            backgroundColor: ['#3670A3', '#66a6ff', '#3670A3'],
+                          }}
+                          transition={{
+                            opacity: {
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: index * 0.5
+                            },
+                            backgroundColor: {
+                              duration: 2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: index * 0.5
+                            }
+                          }}
+                        />
+                      )}
+                      {labels[index]}
+                    </motion.button>
+                  );
+                })}
               </div>
 
               <motion.div
@@ -137,7 +158,7 @@ export default function Home() {
                   {currentContent.description}
                 </p>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </motion.section>
 
@@ -149,15 +170,33 @@ export default function Home() {
       </main>
 
       {/* Modern Footer */}
-      <footer className="bg-black py-12">
-        <div className="max-w-7xl mx-auto px-6">
+      <footer className="bg-black py-12 relative overflow-hidden">
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ zIndex: 0 }}
+        >
+          <source src="/5324177-hd_1280_720_30fps.mp4" type="video/mp4" />
+        </video>
+
+        {/* Dark overlay */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black"
+          style={{ zIndex: 1 }}
+        />
+
+        <div className="max-w-7xl mx-auto px-6 relative" style={{ zIndex: 2 }}>
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex items-center gap-3">
               <Image 
                 src="/innovo-logo.png" 
                 alt="Innovo Markets" 
-                width={120} 
-                height={40}
+                width={180} 
+                height={60}
                 className="object-contain"
               />
             </div>

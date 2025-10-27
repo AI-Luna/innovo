@@ -8,22 +8,22 @@ export const ClientWork: React.FC = () => {
     {
       id: 'purchaser',
       label: "REC purchaser",
-      description: "Request pricing from Innovo's supplier network. Retire RECs from every registry in one place. Use easy-to-use data for compliance audits. Stay ahead on RPS required deadlines with dynamic forecasting. Ensure authenticity and reduce regulatory risks with verified RECs. View all registry subaccounts on a single screen."
+      description: "Price Sourcing: Request and compare REC pricing from verified suppliers.\n\nSeamless Retirement: Retire certificates from every registry in one place.\n\nCompliance Reporting: Access audit-ready data for effortless compliance.\n\nDynamic Forecasting: Stay ahead of Renewable Portfolio Standard deadlines.\n\nRisk Mitigation: Ensure authenticity with verified and traceable RECs.\n\nAggregate Inventory: View all registry accounts and holdings on a single screen."
     },
     {
       id: 'supplier',
       label: "REC supplier",
-      description: "Maximized Revenue: Market your RECs better with higher fidelity data. Distribution Channel: Gain access to a nationwide market of buyers. List RECs: Originate and list RECs on a single screen."
+      description: "Maximized Revenue: Market RECs with high-quality, verified data to increase returns.\n\nDistribution Channel: Reach a nationwide network of qualified REC buyers.\n\nList RECs: Originate and publish certificates on a single, streamlined interface.\n\nDeal Settlement: Close transactions faster with instant settlement capabilities.\n\nLiquidity Network: Provide or access liquidity for real-time REC demand.\n\nConnect Counterparties: Manage all buyer and broker relationships in one place."
     },
     {
       id: 'netzero',
       label: "Net zero company",
-      description: "Simplified Compliance: Effortlessly meet regulatory requirements and sustainability goals. Transparent Purchasing: Procure verifiable green assets in alignment with purchasing goals. Cost Optimization: Reduce expenses with efficient REC procurement and management. Environmental Impact: Decarbonize supply chain with multiple profile management. Audit Trail: Enhance reporting with immutable records and related documentation. Competitive Advantage: Demonstrate clear commitment to sustainability efforts."
+      description: "Simplified Compliance: Meet regulatory and sustainability goals effortlessly.\n\nTransparent Purchasing: Procure verified green assets aligned with company targets.\n\nCost Optimization: Lower expenses through efficient REC procurement and management.\n\nEnvironmental Impact: Decarbonize operations and supply chains with ease.\n\nAudit Trail: Strengthen reporting with verified records and documentation.\n\nCompetitive Advantage: Showcase credible progress toward net-zero commitments."
     },
     {
       id: 'marketplace',
       label: "REC marketplace",
-      description: "Platforms and registries leveraging Innovo's infrastructure to facilitate REC trading with automated settlement and comprehensive data enrichment."
+      description: "Increased Volume: Unlock participation from smaller buyers and sellers with no minimums.\n\nSeamless Delivery: Enable real-time settlement for faster, smoother transactions.\n\nRegulatory Compliance: Maintain confidence with built-in compliance and reporting tools.\n\nEnhanced Security: Protect all trades with advanced encryption and authentication.\n\nTransparent Transactions: Build trust through verified procurement and retirement records.\n\nMarket Growth: Expand participation with tools that attract and retain users."
     }
   ];
 
@@ -31,78 +31,143 @@ export const ClientWork: React.FC = () => {
 
   return (
     <motion.section 
-      className="pt-0 pb-24 relative overflow-hidden"
-      style={{ backgroundColor: '#1A1A1A' }}
+      className="pt-0 pb-12 relative overflow-hidden"
+      style={{ backgroundColor: '#1A1A1A', minHeight: '100vh' }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.2, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <div className="max-w-7xl mx-auto px-6 pt-8">
+      <div className="max-w-7xl mx-auto px-6 pt-0">
         {/* Top label section - Larger and navigation bar color */}
-        <div className="flex justify-between items-center mb-8">
-          <span className="text-3xl font-hacker" style={{ color: '#262626' }}>THE FUTURE</span>
-          <span className="text-3xl font-hacker" style={{ color: '#262626' }}>OF</span>
-          <span className="text-3xl font-hacker" style={{ color: '#262626' }}>THE GRID</span>
+        <div className="flex items-center mb-24 justify-between">
+          <span className="text-3xl font-hacker flex-1" style={{ color: '#262626' }}>Where</span>
+          <span className="text-3xl font-hacker flex-1 text-center" style={{ color: '#262626' }}>Energy Markets</span>
+          <span className="text-3xl font-hacker flex-1 text-right" style={{ color: '#262626' }}>Run</span>
         </div>
 
         {/* Main title */}
-        <h2 className="text-6xl font-hacker text-center mb-16" style={{ color: '#E0E0E0' }}>
-          Innovo Client Work
+        <h2 className="text-6xl font-bold text-center mb-32 mt-32 font-hacker" style={{ color: '#E0E0E0' }}>
+          Innovo Users
         </h2>
 
         {/* Client buttons */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {clients.map((client) => (
-            <motion.button
-              key={client.id}
-              onClick={() => setSelectedClient(client.id)}
-              className="text-left"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {/* Label */}
-              <div className="mb-4 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full" style={{ backgroundColor: selectedClient === client.id ? '#FF4500' : '#666' }}></div>
-                <span className={`text-sm font-hacker px-3 py-1 rounded-full transition-colors ${
-                  selectedClient === client.id ? 'bg-[#FF4500] text-white' : 'bg-[#262626]'
-                }`} style={{ color: selectedClient === client.id ? 'white' : '#E0E0E0' }}>
-                  {client.label}
-                </span>
-              </div>
+        <div className="grid grid-cols-4 gap-4 mb-48">
+          {clients.map((client, index) => (
+            <div key={client.id}>
+              {/* Label Button */}
+              <motion.button
+                onClick={() => setSelectedClient(selectedClient === client.id ? null : client.id)}
+                className="w-full"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                animate={selectedClient === null ? {
+                  opacity: [0.4, 1, 0.4],
+                } : {}}
+                transition={{
+                  opacity: {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: index * 0.5
+                  }
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  <motion.div 
+                    className="w-2 h-2 rounded-full" 
+                    style={{ backgroundColor: selectedClient === client.id ? '#FF4500' : '#3670A3' }}
+                    animate={selectedClient === null ? {
+                      opacity: [0.3, 1, 0.3],
+                      backgroundColor: ['#3670A3', '#66a6ff', '#3670A3'],
+                    } : {}}
+                    transition={{
+                      opacity: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.5
+                      },
+                      backgroundColor: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.5
+                      }
+                    }}
+                  ></motion.div>
+                  <motion.span 
+                    className={`text-lg font-hacker px-3 py-1 rounded-full transition-colors ${
+                      selectedClient === client.id ? 'bg-[#FF4500] text-white' : 'bg-[#262626]'
+                    }`}
+                    animate={selectedClient === null ? {
+                      textShadow: ['0 0 0px #3670A3', '0 0 8px #3670A3, 0 0 12px #3670A3', '0 0 0px #3670A3'],
+                    } : {}}
+                    transition={{
+                      textShadow: {
+                        duration: 2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: index * 0.5
+                      }
+                    }}
+                    style={{ color: selectedClient === client.id ? 'white' : '#E0E0E0' }}
+                  >
+                    {client.label}
+                  </motion.span>
+                </div>
+              </motion.button>
 
-              {/* Box description */}
-              <div className={`bg-[#262626] rounded-lg p-6 border-l-4 transition-all ${
-                selectedClient === client.id ? 'shadow-lg' : ''
-              }`} style={{ 
-                borderLeftColor: selectedClient === client.id ? '#FF4500' : '#666' 
-              }}>
+              {/* Box description - Only appears when clicked */}
+              {selectedClient === client.id && (
+                <motion.div 
+                  className="bg-[#262626] rounded-lg p-6 border-l-4 mt-4"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ borderLeftColor: '#FF4500' }}
+                >
                 <p className="text-sm leading-relaxed font-hacker whitespace-pre-line" style={{ color: '#E0E0E0' }}>
-                  {client.description}
+                  {client.description.split('\n').map((line, index) => {
+                    const parts = line.split(':');
+                    if (parts.length > 1) {
+                      return (
+                        <span key={index}>
+                          <span className="font-bold" style={{ color: '#3670A3' }}>{parts[0]}:</span>
+                          <br />
+                          {parts.slice(1).join(':')}
+                          {index < client.description.split('\n').length - 1 && <br />}
+                        </span>
+                      );
+                    }
+                    return <span key={index}>{line}{index < client.description.split('\n').length - 1 && <br />}</span>;
+                  })}
                 </p>
-              </div>
-            </motion.button>
+                </motion.div>
+              )}
+            </div>
           ))}
         </div>
 
         {/* Bottom features text */}
-        <div className="mt-16 text-center">
+        <div className="mt-96 text-center">
           <div className="flex justify-center items-center gap-4 mb-4 flex-wrap">
             <p className="text-sm font-hacker" style={{ color: '#E0E0E0' }}>
-              Self-powered | Maintenance-free
+              SECURE NETWORK
             </p>
             <div className="h-4 w-px" style={{ backgroundColor: '#E0E0E0' }}></div>
             <p className="text-sm font-hacker" style={{ color: '#E0E0E0' }}>
-              Built-in cellular and satellite communications
+              CENTRALIZED DATA
             </p>
             <div className="h-4 w-px" style={{ backgroundColor: '#E0E0E0' }}></div>
             <p className="text-sm font-hacker" style={{ color: '#E0E0E0' }}>
-              On-board programmable intelligence
+              TRANSPARENT TRANSACTIONS
             </p>
           </div>
           
-          {/* Orange line */}
-          <div className="h-1 mx-auto" style={{ width: '200px', backgroundColor: '#FF4500' }}></div>
+          {/* Blue line */}
+          <div className="h-1 mx-auto" style={{ width: '200px', backgroundColor: '#3670A3' }}></div>
         </div>
       </div>
     </motion.section>

@@ -25,15 +25,18 @@ const TypewriterText: React.FC< { text: string; speed?: number; startTyping: boo
 
   return (
     <>
-      <span className="font-hacker">{displayedText}</span>
+      <span className="font-bold">{displayedText}</span>
       <span 
-        className="font-hacker inline-block" 
+        className="inline-block" 
         style={{ 
-          borderBottom: '2px solid #FF4500',
-          animation: 'blink 1s ease-in-out infinite'
+          backgroundColor: '#FF4500',
+          width: '0.6ch',
+          height: '1em',
+          verticalAlign: 'text-bottom',
+          animation: 'blink 1s ease-in-out infinite',
+          marginLeft: '2px'
         }}
       >
-        &nbsp;
       </span>
       <style jsx>{`
         @keyframes blink {
@@ -68,31 +71,29 @@ export const ModernFeatures: React.FC = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-32 relative overflow-hidden h-screen flex items-center"
+      className="relative overflow-hidden h-screen flex items-center justify-center"
       style={{
         background: `linear-gradient(to bottom, transparent 0%, rgba(224, 224, 224, 0.3) 40%, rgba(224, 224, 224, 1) 70%)`
       }}
     >
-      <div className="max-w-5xl mx-auto px-6 relative z-10 -mt-[15rem]">
+      <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
         {/* Text block */}
         <ScrollReveal direction="up" delay={0.2}>
-          <div className="px-16 py-12">
-            <div className="relative" style={{ minHeight: '400px', display: 'flex', alignItems: 'center' }}>
-              {/* Typewriter text */}
-              <motion.p 
-                className="text-2xl lg:text-3xl font-hacker leading-relaxed max-w-4xl"
-                style={{ color: '#E0E0E0' }}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                onViewportEnter={() => setIsTyping(true)}
-                onViewportLeave={() => setIsTyping(false)}
-                transition={{ duration: 1 }}
-                viewport={{ once: false }}
-              >
-                <span>Innovo Markets is rebuilding the foundation of energy finance by{' '}</span>
-                <TypewriterText startTyping={isTyping} speed={50} text="automating how environmental commodities are transacted, verified, and settled across a unified digital network" />
-              </motion.p>
-            </div>
+          <div className="px-6 py-4">
+            {/* Typewriter text */}
+            <motion.p 
+              className="text-2xl lg:text-3xl font-bold leading-relaxed"
+              style={{ color: '#E0E0E0' }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              onViewportEnter={() => setIsTyping(true)}
+              onViewportLeave={() => setIsTyping(false)}
+              transition={{ duration: 1 }}
+              viewport={{ once: false }}
+            >
+              <span>Innovo Markets is rebuilding the foundation of energy finance by{' '}</span>
+              <TypewriterText startTyping={isTyping} speed={50} text="automating how environmental commodities are transacted, verified, and settled across a unified digital network" />
+            </motion.p>
           </div>
         </ScrollReveal>
       </div>
